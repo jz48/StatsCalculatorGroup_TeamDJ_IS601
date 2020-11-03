@@ -13,6 +13,26 @@ class StatsCalculator(Calculator):
 			cnt = cnt + 1
 		return res/cnt
 
+	def median(self, nums):
+		nums = nums.sort()
+		if mode(len(nums), 2) == 1:
+			res = nums[self.division(2, (len(nums)+1))]
+		else:
+			res = self.division(2, nums[self.division(2, (len(nums)+1))]+nums[self.division(2, (len(nums)+1))-1])
+		return res
+
+	def mode(self, a, b):
+		pass
+
+	def standard_deviation(self, nums):
+		pass
+
+	def variance(self, nums):
+		pass
+
+	def z_score(self, x, nums):
+		pass
+
 
 if __name__ == '__main__':
 	sc = StatsCalculator()
