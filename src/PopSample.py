@@ -1,5 +1,9 @@
-class PopulationSample:
-    result = 0
+from .Calc import Calculator
+
+
+class PopulationSample(Calculator):
+    def __init__(self):
+        super().__init__()
 
 def cochran(z, p, q, e):
     try:
@@ -28,3 +32,22 @@ def cochran(z, p, q, e):
 # num3 = 0.0025
 # num4 = 0.9604
 # return = 384.16
+
+
+def find_sample_size(p, q, za2, e):
+    try:
+        p = float(p)
+        q = float(q)
+        za2 = float(za2)
+        e = float(e)
+
+        num1 = p * q
+        num2 = za2 / e
+        num3 = num2 * num2
+        result = int(num1 * num3)
+        return result
+
+    except ZeroDivisionError:
+        print('Error! Cannot divide by 0')
+    except ValueError:
+        print('Error! Invalid data entry')
