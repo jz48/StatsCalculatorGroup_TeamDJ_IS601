@@ -1,2 +1,2 @@
 pytest
-coverage
+coverage==5.3
