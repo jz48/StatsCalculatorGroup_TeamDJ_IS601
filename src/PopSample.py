@@ -110,7 +110,7 @@ def conf_int(a, b, c, d, e):
         x = mean(a, b, c, d, e)
         s = standard_deviation(a, b, c, d, e)
 
-        num1 = squared_root(n)
+        num1 = square_root(n)
         num2 = s / num1
         num3 = z * num2
         result = round((x - num3), 2)

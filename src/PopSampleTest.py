@@ -1,8 +1,7 @@
-from .Calc import Calculator
-from .PopSample import cochran, find_sample_size, margin, conf_int
+from src.PopSample import cochran, find_sample_size, margin, conf_int
 
 
-class PopSampling(Calculator):
+class PopSampling():
     data = []
 
     def __init__(self):

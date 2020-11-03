@@ -4,4 +4,5 @@ ADD src /src
 
 RUN pip install coverage pytest
 
-CMD [ "python", "./src/CalcTest.py" ]
+CMD [ "python", "./src/PopSampleTest.py"]
+
