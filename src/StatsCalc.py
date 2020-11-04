@@ -35,7 +35,12 @@ class StatsCalculator(Calculator):
 		return res
 
 	def variance(self, nums):
-		pass
+		m = self.mean(nums)
+		res = 0
+		for i in nums:
+			res = res + self.multiplication(i - m, i - m)
+		res = self.division(len(nums), res)
+		return res
 
 	def z_score(self, x, nums):
 		pass
