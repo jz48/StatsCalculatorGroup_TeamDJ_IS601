@@ -43,7 +43,11 @@ class StatsCalculator(Calculator):
 		return res
 
 	def z_score(self, x, nums):
-		pass
+		m = self.mean(nums)
+		a = self.subtract(m, x)
+		b = self.standard_deviation(nums)
+		z = self.division(b, a)
+		return z
 
 
 if __name__ == '__main__':
