@@ -1,5 +1,5 @@
 from Calc import Calculator, addition, multiplication,division,square,root
-
+#need to add import from stats calc
 
 class PopulationSample(Calculator):
     def __init__(self):
