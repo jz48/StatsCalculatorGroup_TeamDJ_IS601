@@ -1,11 +1,11 @@
+import unittest
 from Calc import Calculator
 from PopSample import PopulationSample, cochran, find_sample_size, margin, conf_int
 
-class MyPopSampleTestCase(Calculator):
-    data = []
+class Popsampling(Calculator):
 
-    def test_instantiate_PopulationSample(self):
-        self.assertIsInstance(self.PopulationSample, PopulationSample)
+    def __init__(self):
+        super().__init__()
 
 
     def cochran(self, z, p, q, e):
@@ -24,4 +24,5 @@ class MyPopSampleTestCase(Calculator):
         self.result = conf_int(a, b, c, d, e)
         return self.result
 
-    pass
+if __name__ == '__main__':
+    unittest.main()

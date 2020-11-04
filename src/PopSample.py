@@ -1,4 +1,4 @@
-from Calc import Calculator
+from Calc import Calculator, addition, multiplication,division,square,root
 
 
 class PopulationSample(Calculator):
@@ -63,7 +63,7 @@ def find_sample_size(p, q, za2, e):
 
                 n = len(data)
                 stand_dev = standard_deviation(a, b, c, d, e)
-                sqr_n = round(square_root(n), 2)
+                sqr_n = round(root(n), 2)
                 value1 = stand_dev / sqr_n
                 z = int(1.96)
                 result = round((value1 * z), 1)
