@@ -1,6 +1,7 @@
 import unittest
 from PopSample import PopulationSample
 from CsvReader import CsvReader
+from pprint import pprint
 
 class MyTestCase(unittest.TestCase):
 
@@ -16,7 +17,7 @@ class MyTestCase(unittest.TestCase):
         test_data = CsvReader('./src/data/Cochran_Data.csv').data
         for row in test_data:
             #pprint(self.PopSampling.cochran(row['Z'], row['p'], row['q'], row['e']))
-            self.assertEqual(self.PopulationSample.cochran(row['Z'], row['p'], row['q'], row['e']), int(row['Sample']))
+            self.assertEqual(self.PopulationSample.cochran(row['z'], row['p'], row['q'], row['e']), int(row['Sample']))
             self.assertEqual(self.PopulationSample.result, int(row['Sample']))
         test_data.clear()
 
@@ -43,3 +44,6 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(self.PopulationSample.conf_int(row['a'], row['b'], row['c'], row['d'], row['e']), float(row['ConfInt']))
             self.assertEqual(self.PopulationSample.result, float(row['ConfInt']))
         test_data.clear()
+
+if __name__ == '__main__':
+    unittest.main()
