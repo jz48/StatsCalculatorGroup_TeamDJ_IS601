@@ -22,7 +22,8 @@ class StatsCalculator(Calculator):
 		return res
 
 	def mode(self, a, b):
-		pass
+		b = b - self.multiplication(a, (self.dicision(a, b)))
+		return b
 
 	def standard_deviation(self, nums):
 		pass
