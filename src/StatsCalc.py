@@ -26,7 +26,13 @@ class StatsCalculator(Calculator):
 		return b
 
 	def standard_deviation(self, nums):
-		pass
+		m = self.mean(nums)
+		res = 0
+		for i in nums:
+			res = res + self.multiplication(i - m, i - m)
+		res = self.root(res)
+		res = self.division(len(nums), res)
+		return res
 
 	def variance(self, nums):
 		pass
