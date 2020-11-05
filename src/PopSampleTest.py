@@ -14,7 +14,9 @@ class MyTestCase(unittest.TestCase):
 
     # Testing Cochran
     def test_cochran(self):
-        test_data = CsvReader('./src/data/Cochran_Data.csv').data
+        print ( '---------------test cochran-----------------' )
+        test_data = CsvReader ( './src/data/Cochran_Data.csv').data
+        #print test data
         for row in test_data:
             #pprint(self.PopSampling.cochran(row['Z'], row['p'], row['q'], row['e']))
             self.assertEqual(self.PopulationSample.cochran(row['z'], row['p'], row['q'], row['e']), int(row['Sample']))

@@ -1,4 +1,3 @@
-from Calc import Calculator
 from StatsCalc import StatsCalculator
 
 
