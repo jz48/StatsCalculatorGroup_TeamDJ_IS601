@@ -16,10 +16,10 @@ class PopulationSample(StatsCalculator):
             e = float(e)
 
             num1 = self.square(z)
-            num2 = p * q
-            num3 = e * e
-            num4 = num1 * num2
-            self.result = round(num4 / num3)
+            num2 = self.multiplication(p, q)
+            num3 = self.square(e)
+            num4 = self. multiplication(num1, num2)
+            self.result = round(self.division(num3, num4))
         except ZeroDivisionError:
             print('Error!  Cannot divide by 0')
         except ValueError:
@@ -34,11 +34,11 @@ class PopulationSample(StatsCalculator):
             za2 = float(za2)
             e = float(e)
 
-            num1 = p * q
-            num2 = za2 / e
-            num3 = num2 * num2
-            result = int(num1 * num3)
-            return result
+            num1 = self.multiplication(p, q)
+            num2 = self.division(e, za2)
+            num3 = self.square(num2)
+            self.result = int(self.multiplication(num1, num3))
+
 
         except ZeroDivisionError:
             print('Error! Cannot divide by 0')
@@ -56,13 +56,13 @@ class PopulationSample(StatsCalculator):
             e = int(e)
             data = [a, b, c, d, e]
 
-            n = len(data)
-            stand_dev = self.standard_deviation([a, b, c, d, e])
-            sqr_n = round(self.root(n), 2)
-            value1 = stand_dev / sqr_n
+            n = len([data])
+            num2 = self.standard_deviation([a, b, c, d, e])
+            num3 = round(self.root(n), 2)
+            value1 = self.division(num3, num2)
             z = int(1.96)
-            result = round((value1 * z), 1)
-            return result
+            self.result = round((value1 * z), 1)
+
 
         except ZeroDivisionError:
             print("Error! Cannot Divide by 0")
@@ -79,16 +79,16 @@ class PopulationSample(StatsCalculator):
             e = int(e)
             data = [a, b, c, d, e]
 
-            n = len(data)
+            n = int(len(data) -1)
             z = int(1.96)
             x = self.mean([a, b, c, d, e])
             s = self.standard_deviation([a, b, c, d, e])
 
             num1 = self.root(n)
-            num2 = s / num1
-            num3 = z * num2
-            result = round((x - num3), 2)
-            return result
+            num2 = self.division(num1, s)
+            num3 = self.multiplication(z, num2)
+            self.result = round(self.subtract(num3, x), 2)
+
 
         except ZeroDivisionError:
             print("Error! Cannot Divide by 0")
