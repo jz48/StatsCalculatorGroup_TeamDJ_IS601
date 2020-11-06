@@ -12,19 +12,24 @@ class StatsCalculator(Calculator):
 		counter = 0
 		for i in nums:
 			res = self.add(res, i)
-			counter = counter +1
+			counter = counter + 1
 		return self.division(counter, res)
 
 	def median(self, nums):
-		nums = nums.sort()
-		if mode(len(nums), 2) == 1:
-			res = nums[self.division(2, (len(nums)+1))]
+		print('nums: ', nums, type(nums))
+		nums = sorted(nums)
+		print('nums: ', nums, type(nums))
+		print('len: ', len(nums), self.mode(len(nums), 2))
+		if self.mode(2, len(nums)) == 1:
+			res = nums[int(self.division(2, (len(nums)+1)))]
 		else:
-			res = self.division(2, nums[self.division(2, (len(nums)+1))]+nums[self.division(2, (len(nums)+1))-1])
+			res = self.division(2, nums[int(self.division(2, (len(nums)+1)))]+nums[int(self.division(2, (len(nums)+1))-1)])
 		return res
 
 	def mode(self, a, b):
-		b = b - self.multiplication(a, (self.division(a, b)))
+		print('a, b: ', a, b)
+		b = b - self.multiplication(a, (int(self.division(a, b))))
+
 		return b
 
 	def standard_deviation(self, nums):
