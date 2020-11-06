@@ -5,7 +5,7 @@ from Calc import Calculator
 
 class StatsCalculator(Calculator):
 	result = 0
-	
+
 	def __init__(self):
 		super().__init__()
 
@@ -15,7 +15,8 @@ class StatsCalculator(Calculator):
 		for i in nums:
 			res = self.add(res, i)
 			counter = counter + 1
-		return self.division(counter, res)
+		self.result = self.division(counter, res)
+		return self.result
 
 	def median(self, nums):
 		# print('nums: ', nums, type(nums))
@@ -30,8 +31,8 @@ class StatsCalculator(Calculator):
 
 	def mode(self, a, b):
 		# print('a, b: ', a, b)
-		b = b - self.multiplication(a, (int(self.division(a, b))))
-		return b
+		self.result = b - self.multiplication(a, (int(self.division(a, b))))
+		return self.result
 
 	def standard_deviation(self, nums):
 		m = self.mean(nums)
@@ -39,23 +40,23 @@ class StatsCalculator(Calculator):
 		for i in nums:
 			res = res + self.multiplication(i - m, i - m)
 		res = self.root(res)
-		res = self.division(len(nums), res)
-		return res
+		self.result = self.division(len(nums), res)
+		return self.result
 
 	def variance(self, nums):
 		m = self.mean(nums)
 		res = 0
 		for i in nums:
 			res = res + self.multiplication(i - m, i - m)
-		res = self.division(len(nums), res)
-		return res
+		self.result = self.division(len(nums), res)
+		return self.result
 
 	def z_score(self, x, nums):
 		m = self.mean(nums)
 		a = self.subtract(m, x)
 		b = self.standard_deviation(nums)
-		z = self.division(b, a)
-		return z
+		self.result = self.division(b, a)
+		return self.result
 
 
 if __name__ == '__main__':
