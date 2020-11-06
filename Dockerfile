@@ -4,5 +4,5 @@ ADD src /src
 
 RUN pip install statistics scipy
 
-CMD [ "python", "./src/StatsCalcTest.py"]
+CMD [ "python", "./src/PopSampleTest.py"]
 
