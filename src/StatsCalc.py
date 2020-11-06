@@ -4,6 +4,8 @@ from Calc import Calculator
 
 
 class StatsCalculator(Calculator):
+	result = 0
+
 	def __init__(self):
 		super().__init__()
 
@@ -12,44 +14,74 @@ class StatsCalculator(Calculator):
 		counter = 0
 		for i in nums:
 			res = self.add(res, i)
-			counter = counter +1
-		return self.division(counter, res)
+			counter = counter + 1
+		self.result = self.division(counter, res)
+		return self.result
 
 	def median(self, nums):
-		nums = nums.sort()
-		if mode(len(nums), 2) == 1:
-			res = nums[self.division(2, (len(nums)+1))]
+		# print('nums: ', nums, type(nums))
+		nums = sorted(nums)
+		# print('nums: ', nums, type(nums))
+		# print('len: ', len(nums), self.mode(2, len(nums)))
+		if self.mod(2, len(nums)) == 1:
+			self.result = nums[int(self.division(2, (len(nums)+1)))-1]
 		else:
-			res = self.division(2, nums[self.division(2, (len(nums)+1))]+nums[self.division(2, (len(nums)+1))-1])
-		return res
+			self.result = self.division(2, nums[int(self.division(2, (len(nums)+1)))-1]+nums[int(self.division(2, (len(nums)+1))-1)-1])
+		return self.result
 
-	def mode(self, a, b):
-		b = b - self.multiplication(a, (self.division(a, b)))
-		return b
+	def mod(self, a, b):
+		# print('a, b: ', a, b)
+		self.result = b - self.multiplication(a, (int(self.division(a, b))))
+		return self.result
+
+	def mode(self, nums):
+		dict = {}
+		for i in nums:
+			dict[str(i)] = 0
+		for i in nums:
+			dict[str(i)] = dict[str(i)] + 1
+		mark = -1
+		res = -1
+		for i in nums:
+			if dict[str(i)] > mark:
+				mark = dict[str(i)]
+				res = i
+		self.result = res
+		return self.result
 
 	def standard_deviation(self, nums):
 		m = self.mean(nums)
 		res = 0
 		for i in nums:
 			res = res + self.multiplication(i - m, i - m)
-		res = self.root(res)
+		res = self.division(len(nums) - 1, res)
+		self.result = self.root(res)
+		return self.result
+
+	def population_standard_deviation(self, nums):
+		m = self.mean(nums)
+		res = 0
+		for i in nums:
+			res = res + self.multiplication(i - m, i - m)
 		res = self.division(len(nums), res)
-		return res
+		self.result = self.root(res)
+		return self.result
 
 	def variance(self, nums):
 		m = self.mean(nums)
 		res = 0
 		for i in nums:
 			res = res + self.multiplication(i - m, i - m)
-		res = self.division(len(nums), res)
-		return res
+		self.result = self.division(len(nums), res)
+		return self.result
 
 	def z_score(self, x, nums):
 		m = self.mean(nums)
 		a = self.subtract(m, x)
-		b = self.standard_deviation(nums)
-		z = self.division(b, a)
-		return z
+		b = self.population_standard_deviation(nums)
+		self.result = self.division(b, a)
+		print(nums, x, m, a, b, self.result)
+		return self.result
 
 
 if __name__ == '__main__':
