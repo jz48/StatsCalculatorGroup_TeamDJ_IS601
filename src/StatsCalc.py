@@ -58,6 +58,15 @@ class StatsCalculator(Calculator):
 		self.result = self.root(res)
 		return self.result
 
+	def population_standard_deviation(self, nums):
+		m = self.mean(nums)
+		res = 0
+		for i in nums:
+			res = res + self.multiplication(i - m, i - m)
+		res = self.division(len(nums), res)
+		self.result = self.root(res)
+		return self.result
+
 	def variance(self, nums):
 		m = self.mean(nums)
 		res = 0
@@ -69,7 +78,7 @@ class StatsCalculator(Calculator):
 	def z_score(self, x, nums):
 		m = self.mean(nums)
 		a = self.subtract(m, x)
-		b = self.standard_deviation(nums)
+		b = self.population_standard_deviation(nums)
 		self.result = self.division(b, a)
 		print(nums, x, m, a, b, self.result)
 		return self.result

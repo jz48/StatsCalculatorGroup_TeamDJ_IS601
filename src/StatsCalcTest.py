@@ -74,7 +74,7 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(self.statsCalculator.result, stdev(data))
         test_data.clear()
 
-    #Testing z-score
+    # Testing z-score
     def test_z_score(self):
         test_data = CsvReader('./src/data/ZScore_Data.csv').data
         # print(test_data)
@@ -84,8 +84,8 @@ class MyTestCase(unittest.TestCase):
             data3 = [float(row['Score']), float(row['Value1']), float(row['Value2']), float(row['Value3']),
                      float(row['Value4'])]
             print('z score: ', stats.zscore(data3))
-            self.assertEqual(self.statsCalculator.z_score(data1, data3), round(float(row['Z-Score']), 2))
-            self.assertEqual(self.statsCalculator.result, round(float(row['Z-Score']), 2))
+            self.assertEqual(self.statsCalculator.z_score(data1, data3), stats.zscore(data3)[0])
+            self.assertEqual(self.statsCalculator.result, stats.zscore(data3)[0])
         test_data.clear()
 
 
