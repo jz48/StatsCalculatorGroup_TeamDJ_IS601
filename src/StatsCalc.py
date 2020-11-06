@@ -23,15 +23,30 @@ class StatsCalculator(Calculator):
 		nums = sorted(nums)
 		# print('nums: ', nums, type(nums))
 		# print('len: ', len(nums), self.mode(2, len(nums)))
-		if self.mode(2, len(nums)) == 1:
+		if self.mod(2, len(nums)) == 1:
 			self.result = nums[int(self.division(2, (len(nums)+1)))-1]
 		else:
 			self.result = self.division(2, nums[int(self.division(2, (len(nums)+1)))-1]+nums[int(self.division(2, (len(nums)+1))-1)-1])
 		return self.result
 
-	def mode(self, a, b):
+	def mod(self, a, b):
 		# print('a, b: ', a, b)
 		self.result = b - self.multiplication(a, (int(self.division(a, b))))
+		return self.result
+
+	def mode(self, nums):
+		dict = {}
+		for i in nums:
+			dict[str(i)] = 0
+		for i in nums:
+			dict[str(i)] = dict[str(i)] + 1
+		mark = -1
+		res = -1
+		for i in nums:
+			if dict[str(i)] > mark:
+				mark = dict[str(i)]
+				res = i
+		self.result = res
 		return self.result
 
 	def standard_deviation(self, nums):
