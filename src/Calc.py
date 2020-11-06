@@ -30,11 +30,11 @@ class Calculator:
 
 
 def addition(a, b):
-	return a + b
+	return float(a) + float(b)
 
 
 def subtraction(a, b):
-	return b - a
+	return float(b) - float(a)
 
 
 def multiplication(a, b):
@@ -42,7 +42,7 @@ def multiplication(a, b):
 
 
 def division(a, b):
-	return b / a
+	return float(b) / float(a)
 
 
 def square(a):

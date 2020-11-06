@@ -18,7 +18,7 @@ class MyTestCase(unittest.TestCase):
     def test_mean(self):
         test_data = CsvReader ( './src/data/Mean_Data.csv').data
         for row in test_data:
-            self.assertEqual(self.statsCalculator.mean(row['Value1'], row['Value2'], row['Value3'], row['Value4'], row['Value5']), float(row['Mean']))
+            self.assertEqual(self.statsCalculator.mean(nums=(int(row['Value1']), int(row['Value2']), int(row['Value3']), int(row['Value4']), int(row['Value5']))), float(row['Mean']))
             self.assertEqual(self.statsCalculator.result, float(row['Mean']))
         test_data.clear()
 
@@ -27,7 +27,7 @@ class MyTestCase(unittest.TestCase):
         test_data = CsvReader ( './src/data/Median_Data.csv').data
         #pprint(test_data)
         for row in test_data:
-            self.assertEqual(self.statsCalculator.median(row['Value1'], row['Value2'], row['Value3'], row['Value4'], row['Value5']), float(row['Median']))
+            self.assertEqual(self.statsCalculator.median(nums=(row['Value1'], row['Value2'], row['Value3'], row['Value4'], row['Value5'])), float(row['Median']))
             self.assertEqual(self.statsCalculator.result, float(row['Median']))
         test_data.clear()
 
@@ -45,7 +45,7 @@ class MyTestCase(unittest.TestCase):
         test_data = CsvReader ( './src/data/Variance_Data.csv').data
         #pprint(test_data)
         for row in test_data:
-            self.assertEqual(self.statsCalculator.variance(row['Value1'], row['Value2'], row['Value3'], row['Value4'], row['Value5']), round(float(row['Variance']), 2))
+            self.assertEqual(self.statsCalculator.variance(nums=(int(row['Value1']), int(row['Value2']), int(row['Value3']), int(row['Value4']), int(row['Value5']))), round(float(row['Variance']), 2))
             self.assertEqual(self.statsCalculator.result, round(float(row['Variance']), 2))
         test_data.clear()
 
@@ -54,7 +54,7 @@ class MyTestCase(unittest.TestCase):
         test_data = CsvReader ( './src/data/Standard_Deviation_Data.csv').data
         #pprint(test_data)
         for row in test_data:
-            self.assertEqual(self.statsCalculator.standard_deviation(row['Value1'], row['Value2'], row['Value3'], row['Value4'], row['Value5']), round(float(row['StDev']), 2))
+            self.assertEqual(self.statsCalculator.standard_deviation(nums=(row['Value1'], row['Value2'], row['Value3'], row['Value4'], row['Value5'])), round(float(row['StDev']), 2))
             self.assertEqual(self.statsCalculator.result, round(float(row['StDev']), 2))
         test_data.clear()
 
@@ -63,7 +63,7 @@ class MyTestCase(unittest.TestCase):
         test_data = CsvReader ( './src/data/ZScore_Data.csv').data
         #pprint(test_data)
         for row in test_data:
-            self.assertEqual(self.statsCalculator.z_score(row['Score'], row['Mean'], row['StDev']), round(float(row['Z-Score']), 2))
+            self.assertEqual(self.statsCalculator.z_score(row['Score'], nums=(row['Value1'],row['Value2'], row['Value3'], row['Value4'])), round(float(row['Z-Score']), 2))
             self.assertEqual(self.statsCalculator.result, round(float(row['Z-Score']), 2))
         test_data.clear()
 
