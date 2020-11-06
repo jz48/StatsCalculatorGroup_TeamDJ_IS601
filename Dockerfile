@@ -2,7 +2,7 @@ FROM python:3
 
 ADD src /src
 
-RUN pip install coverage pytest Statistics
+RUN pip install statistics scipy
 
 CMD [ "python", "./src/PopSampleTest.py"]
 
