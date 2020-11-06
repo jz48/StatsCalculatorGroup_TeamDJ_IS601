@@ -4,6 +4,8 @@ from Calc import Calculator
 
 
 class StatsCalculator(Calculator):
+	result = 0
+	
 	def __init__(self):
 		super().__init__()
 
@@ -16,20 +18,19 @@ class StatsCalculator(Calculator):
 		return self.division(counter, res)
 
 	def median(self, nums):
-		print('nums: ', nums, type(nums))
+		# print('nums: ', nums, type(nums))
 		nums = sorted(nums)
-		print('nums: ', nums, type(nums))
-		print('len: ', len(nums), self.mode(len(nums), 2))
+		# print('nums: ', nums, type(nums))
+		# print('len: ', len(nums), self.mode(2, len(nums)))
 		if self.mode(2, len(nums)) == 1:
-			res = nums[int(self.division(2, (len(nums)+1)))]
+			self.result = nums[int(self.division(2, (len(nums)+1)))-1]
 		else:
-			res = self.division(2, nums[int(self.division(2, (len(nums)+1)))]+nums[int(self.division(2, (len(nums)+1))-1)])
-		return res
+			self.result = self.division(2, nums[int(self.division(2, (len(nums)+1)))-1]+nums[int(self.division(2, (len(nums)+1))-1)-1])
+		return self.result
 
 	def mode(self, a, b):
-		print('a, b: ', a, b)
+		# print('a, b: ', a, b)
 		b = b - self.multiplication(a, (int(self.division(a, b))))
-
 		return b
 
 	def standard_deviation(self, nums):
