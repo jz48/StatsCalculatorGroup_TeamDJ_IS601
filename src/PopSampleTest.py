@@ -16,10 +16,9 @@ class MyTestCase(unittest.TestCase):
     def test_cochran(self):
         print( '---------------test cochran-----------------' )
         test_data = CsvReader('./src/data/Cochran_Data1.csv').data
-        # print(test_data)
         for row in test_data:
             #pprint(self.PopSampling.cochran(row['Z'], row['p'], row['q'], row['e']))
-            self.assertEqual(self.PopulationSample.cochran(row['z'], row['p'], row['q'], row['e']), int(row['Sample']))
+            self.assertEqual(self.PopulationSample.cochran(float(row['z']), float(row['p']), float(row['q']), float(row['e'])), int(row['Sample']))
             self.assertEqual(self.PopulationSample.result, int(row['Sample']))
         test_data.clear()
 

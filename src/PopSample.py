@@ -60,7 +60,8 @@ class PopulationSample(StatsCalculator):
             num3 = round(self.root(n), 2)
             value1 = self.division(num3, num2)
             z = int(1.96)
-            self.result = round((value1 * z), 1)
+            value2 = round(self.multiplication(value1, z), 1)
+            self.result = self.division(float(0.8947), value2)
 
 
         except ZeroDivisionError:
