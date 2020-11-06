@@ -96,6 +96,9 @@ class PopulationSample(StatsCalculator):
         return self.result
 
 
+
+
+
 # Z,p,q,e,Sample
 # 1.96,0.5,0.5,0.05,384
 

@@ -47,5 +47,7 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(self.PopulationSample.result, float(row['ConfInt']))
         test_data.clear()
 
+
+
 if __name__ == '__main__':
     unittest.main()
