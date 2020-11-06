@@ -54,8 +54,8 @@ class StatsCalculator(Calculator):
 		res = 0
 		for i in nums:
 			res = res + self.multiplication(i - m, i - m)
-		res = self.root(res)
-		self.result = self.division(len(nums), res)
+		res = self.division(len(nums) - 1, res)
+		self.result = self.root(res)
 		return self.result
 
 	def variance(self, nums):
@@ -71,6 +71,7 @@ class StatsCalculator(Calculator):
 		a = self.subtract(m, x)
 		b = self.standard_deviation(nums)
 		self.result = self.division(b, a)
+		print(nums, x, m, a, b, self.result)
 		return self.result
 
 
