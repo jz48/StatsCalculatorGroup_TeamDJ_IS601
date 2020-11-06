@@ -1,3 +1,5 @@
+from statistics import mode
+
 from Calc import Calculator
 
 
@@ -7,11 +9,11 @@ class StatsCalculator(Calculator):
 
 	def mean(self, nums):
 		res = 0
-		cnt = 0
+		counter = 0
 		for i in nums:
 			res = self.add(res, i)
-			cnt = cnt + 1
-		return res/cnt
+			counter = counter +1
+		return self.division(counter, res)
 
 	def median(self, nums):
 		nums = nums.sort()
