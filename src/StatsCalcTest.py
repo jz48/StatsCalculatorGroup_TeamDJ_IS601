@@ -7,7 +7,6 @@ from CsvReader import CsvReader
 
 
 class MyTestCase(unittest.TestCase):
-
     def setUp(self):
         self.statsCalculator = StatsCalculator()
 
@@ -15,16 +14,18 @@ class MyTestCase(unittest.TestCase):
     def test_instantiate_statistics_calculator(self):
         self.assertIsInstance(self.statsCalculator, StatsCalculator)
 
-    #Testing mean
+    # Testing mean
     def test_mean(self):
+        print('---------------test mean------------------')
         test_data = CsvReader('./src/data/Mean_Data.csv').data
         for row in test_data:
             self.assertEqual(self.statsCalculator.mean(nums=(int(row['Value1']), int(row['Value2']), int(row['Value3']), int(row['Value4']), int(row['Value5']))), float(row['Mean']))
             self.assertEqual(self.statsCalculator.result, float(row['Mean']))
         test_data.clear()
 
-    #Testing median
+    # Testing median
     def test_median(self):
+        print('---------------test median------------------')
         test_data = CsvReader('./src/data/Median_Data.csv').data
         # print(test_data)
         for row in test_data:
@@ -38,8 +39,9 @@ class MyTestCase(unittest.TestCase):
 
     # Testing mode
     def test_mode(self):
+        print('---------------test mode------------------')
         test_data = CsvReader('./src/data/Mode_Data.csv').data
-        #pprint(test_data)
+        # pprint(test_data)
         for row in test_data:
             data = [float(row['Value1']), float(row['Value2']), float(row['Value3']),
                     float(row['Value4']), float(row['Value5'])]
@@ -47,8 +49,9 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(self.statsCalculator.result, float(row["Mode"]))
         test_data.clear()
 
-    #Testing variance (population)
+    # Testing variance (population)
     def test_variance(self):
+        print('---------------test variance------------------')
         test_data = CsvReader('./src/data/Variance_Data.csv').data
         # print(test_data)
         for row in test_data:
@@ -65,6 +68,7 @@ class MyTestCase(unittest.TestCase):
 
     # Testing standard deviation
     def test_standard_deviation(self):
+        print('---------------test standard deviation------------------')
         test_data = CsvReader('./src/data/Standard_Deviation_Data.csv').data
         # print(test_data)
         for row in test_data:
@@ -76,6 +80,7 @@ class MyTestCase(unittest.TestCase):
 
     # Testing z-score
     def test_z_score(self):
+        print('---------------test z score------------------')
         test_data = CsvReader('./src/data/ZScore_Data.csv').data
         # print(test_data)
         for row in test_data:
@@ -83,7 +88,7 @@ class MyTestCase(unittest.TestCase):
             data2 = [float(row['Value1']), float(row['Value2']), float(row['Value3']), float(row['Value4'])]
             data3 = [float(row['Score']), float(row['Value1']), float(row['Value2']), float(row['Value3']),
                      float(row['Value4'])]
-            print('z score: ', stats.zscore(data3))
+            # print('z score: ', stats.zscore(data3))
             self.assertEqual(self.statsCalculator.z_score(data1, data3), stats.zscore(data3)[0])
             self.assertEqual(self.statsCalculator.result, stats.zscore(data3)[0])
         test_data.clear()

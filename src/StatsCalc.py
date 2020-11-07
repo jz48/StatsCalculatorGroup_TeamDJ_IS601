@@ -80,7 +80,7 @@ class StatsCalculator(Calculator):
 		a = self.subtract(m, x)
 		b = self.population_standard_deviation(nums)
 		self.result = self.division(b, a)
-		print(nums, x, m, a, b, self.result)
+		# print(nums, x, m, a, b, self.result)
 		return self.result
 
 
