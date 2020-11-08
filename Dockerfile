@@ -4,5 +4,5 @@ ADD src /src
 
 RUN pip install statistics scipy
 
-ENTRYPOINT ['./run_tests.sh']
+CMD sh ./src/run_tests.sh
 
