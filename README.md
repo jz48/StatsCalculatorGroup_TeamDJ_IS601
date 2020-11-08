@@ -6,3 +6,5 @@
 [Project Blueprint](./src/projectfile.md)
 
 [Stat References](./references)
+
+[Task/ChangeLog](./TaskChangeLog.md)
